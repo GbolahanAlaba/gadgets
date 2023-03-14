@@ -4,7 +4,7 @@ from tkinter import Menu
 from PIL import ImageTk, Image
 import setup
 import signin
-
+import inventory
 
 
 class HOME2:
@@ -92,7 +92,7 @@ class HOME2:
 
         img2 = PhotoImage(file='./Images/inventory.png')
         img2.photo = img2
-        Inv = Button(MF, text='Inventory', image=img2, compound=TOP, font=('roboto', 15, 'bold'), bd=0, bg='white', fg='#D30E0E', cursor='hand2')
+        Inv = Button(MF, text='Inventory', image=img2, compound=TOP, font=('roboto', 15, 'bold'), bd=0, bg='white', fg='#D30E0E', cursor='hand2', command=self.inventorypage)
         Inv.place(x=265, y=30, width=200, height=200,)
 
         img3 = PhotoImage(file='./Images/sales.png')
@@ -122,6 +122,12 @@ class HOME2:
     def signinpage(self):
         win = Toplevel()
         signin.SIGNIN(win)
+        self.window.withdraw()
+        win.deiconify()
+        
+    def inventorypage(self):
+        win = Toplevel()
+        inventory.INVENTORY(win)
         self.window.withdraw()
         win.deiconify()
 

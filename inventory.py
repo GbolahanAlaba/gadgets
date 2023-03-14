@@ -6,10 +6,11 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import Menu
 from PIL import ImageTk, Image
+import home
 
 
 
-class DASHBOARD:
+class INVENTORY:
     def __init__(self, window):
         self.window = window
         self.window.wm_iconbitmap('Images/icon.ico')
@@ -80,6 +81,9 @@ class DASHBOARD:
         
         Title = Label(window, text='Add New | Inventory', font=('roboto', 13, 'bold'), bg='white', fg='#D30E0E')
         Title.place(x=220, y=15)
+
+        Home_B = Button(window, text='Back', font=('roboto', 12, 'bold'), bd=0, bg='#D30E0E', fg='white', cursor='hand2', command=self.homepage)
+        Home_B.place(x=1270, y=20, anchor=N, width=100)
 
         LBF = LabelFrame(window, text="", width=1100, height=600)
         LBF.place(x=220, y=50)
@@ -210,12 +214,17 @@ class DASHBOARD:
 
 
 
-
+    def homepage(self):
+        win = Toplevel()
+        home.HOME(win)
+        self.window.withdraw()
+        win.deiconify()
+    
        
 
 def dash():
     window = Tk()
-    DASHBOARD(window)
+    INVENTORY(window)
     window.mainloop()
 
 
