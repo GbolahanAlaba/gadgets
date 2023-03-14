@@ -6,6 +6,7 @@ from PIL import ImageTk, Image
 import home
 import home2
 import signup
+import inventory
 
 
 
