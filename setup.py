@@ -114,8 +114,7 @@ class SETUP:
                 Val = (ProNameEntry.get(), BrandCombo.get())
                 cursor.executemany('insert into products (Name, Brand) Values(?, ?)', [Val])
                 messagebox.showinfo('Great!', 'Product added successfully!')
-                ProNameEntry.delete(0, END)
-                BrandCombo.delete(0, END)     
+                ProNameEntry.delete(0, END)    
             database.commit()
             database.close()
         

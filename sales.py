@@ -121,10 +121,6 @@ class INVENTORY:
         Damages = Button(SideMenu, text='  Damages', image=img6, compound=LEFT, font=('roboto', 10, 'bold'), bg="#3C4479", fg="white", bd=0, cursor='hand2')
         Damages.place(x=10, y=280)
 
-        # -----------------------Database Section Begins---------------------------
-        
-        # -----------------------Database Section Ends---------------------------
-        # -----------------------Forms Begins-----------------------------------
         List = [
             'None',
             'Samsung',
@@ -168,37 +164,29 @@ class INVENTORY:
         RegCombo.bind('<<<ComboboxSelected>>>')
         RegCombo.place(x=790, y=32)
 
-        
-        database = sqlite3.connect("gadgets.db")
-        cursor = database.cursor()
-        cursor.execute('select name from products')
-        records = cursor.fetchall()
-
-        database.commit()
-        database.close()
 
         def updatelist(data):
-            for record in data:
-                MyList.insert(END, record[0])
+            MyList.delete(0, END)
+            for item in data:
+                MyList.insert(END, item)
 
         def fillout(event):
             Item_Entry.delete(0, END)
             Item_Entry.insert(0, MyList.get(ACTIVE))
-        
+
         def check(event):
             typed = Item_Entry.get()
             if typed == '':
-                data = records
+                data = ML
             
             else:
                 data = []
-                for item in records:
-                    x = item[0]
-                    if typed.lower() in x.lower():
+                for item in ML:
+                    if typed.lower() in item.lower():
                         data.append(item)
 
+            
             updatelist(data)
-     
 
 
         Item = Label(LBF, text='Item', font=('Arial', 11, 'bold'))
@@ -209,11 +197,19 @@ class INVENTORY:
         MyList = Listbox(LBF, width=33, height=10)
         MyList.place(x=30, y=165)
 
+        ML = [
+            'Samsung S8',
+            'Samsung S8+',
+            'Samsung S9',
+            'Samsung S9+',
+            'Samsung S10',
+            'Samsung S10+',
+            'Samsung Note 8',
+            'Samsung Note 9']
 
-        updatelist(records)
+        updatelist(ML)
         MyList.bind("<<ListboxSelect>>", fillout)
         Item_Entry.bind("<KeyRelease>", check)
-    
 
 
         IMEI = Label(LBF, text='IMEI Number', font=('Arial', 11, 'bold'))
@@ -244,12 +240,16 @@ class INVENTORY:
     
        
 
-def inv():
+def dash():
     window = Tk()
     INVENTORY(window)
     window.mainloop()
 
 
 if __name__ == '__main__':
-    inv()
+    dash()
+
+
+
+
 

@@ -3,8 +3,10 @@ from tkinter import messagebox
 from tkinter import Menu
 from PIL import ImageTk, Image
 import setup
-import signin
+import dashboard
 import inventory
+import signin
+
 
 
 
@@ -87,7 +89,7 @@ class HOME:
 
         img1 = PhotoImage(file='./Images/dashboard.png')
         img1.photo = img1
-        ADP = Button(MF, text='Dashboard', image=img1, compound=TOP, font=('roboto', 15, 'bold'), bd=0, bg='white', fg='#D30E0E', cursor='hand2')
+        ADP = Button(MF, text='Dashboard', image=img1, compound=TOP, font=('roboto', 15, 'bold'), bd=0, bg='white', fg='#D30E0E', cursor='hand2', command=self.dashboardpage)
         ADP.place(x=45, y=30, width=200, height=200,)
 
         img2 = PhotoImage(file='./Images/inventory.png')
@@ -119,9 +121,9 @@ class HOME:
         self.window.withdraw()
         win.deiconify()
 
-    def signinpage(self):
+    def dashboardpage(self):
         win = Toplevel()
-        signin.SIGNIN(win)
+        dashboard.DASHBOARD(win)
         self.window.withdraw()
         win.deiconify()
     
@@ -131,6 +133,13 @@ class HOME:
         self.window.withdraw()
         win.deiconify()
 
+    def signinpage(self):
+        win = Toplevel()
+        signin.SIGNIN(win)
+        self.window.withdraw()
+        win.deiconify()
+    
+    
        
 
 def home():
