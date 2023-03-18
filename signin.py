@@ -96,7 +96,7 @@ class SIGNIN:
         NA_Button = Button(window, text='Click here', font=('roboto', 10, 'bold'), bd=0, bg='white', fg='#D30E0E', cursor='hand2', command=self.signuppage)
         NA_Button.place(x=215, y=500)
 
-        imgg = PhotoImage(file='./Images/emonibag.png')
+        imgg = PhotoImage(file='./Images/osd.png')
         pic = Label(window, image = imgg)
         pic.photo = imgg
         pic.place(x=600, y=240)

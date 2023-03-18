@@ -82,8 +82,8 @@ class DASHBOARD:
 
         MenuFrame = Frame(window,bg='#D30E0E')
         MenuFrame.place(x=0, y=0, width=sw, height=32)
-        
-        B1 = Button(MenuFrame, text='Home', font=('Arial', 9, 'bold'), bg='white', fg="#3C4479", bd=0, width=18, cursor='hand2')
+
+        B1 = Button(MenuFrame, text='Home', font=('Arial', 9, 'bold'), bg='white', fg="#3C4479", bd=0, width=18, cursor='hand2', command=self.homepage)
         B1.grid(row=0, column=0, padx=5, pady=5)
         B2 = Button(MenuFrame, text='Products', font=('Arial', 9, 'bold'), bg='white', fg="#3C4479", bd=0, width=18, cursor='hand2')
         B2.grid(row=0, column=1, padx=5, pady=5)
@@ -97,15 +97,15 @@ class DASHBOARD:
         B6.grid(row=0, column=5, padx=5, pady=5)
         B7 = Button(MenuFrame, text='Branches', font=('Arial', 9, 'bold'), bg='white', fg="#3C4479", bd=0, width=18, cursor='hand2')
         B7.grid(row=0, column=6, padx=5, pady=5)
-        B8 = Button(MenuFrame, text='Report', font=('Arial', 8, 'bold'), bg='white', fg="#3C4479", bd=0, width=18, cursor='hand2')
+        B8 = Button(MenuFrame, text='Report', font=('Arial', 9, 'bold'), bg='white', fg="#3C4479", bd=0, width=18, cursor='hand2')
         B8.grid(row=0, column=7, padx=5, pady=5)
 
 
         Date = datetime.now()
-        Menu10 = Label(MenuFrame, text=f"{Date:%A, %B, %d, %Y}", font=('roboto', 10, 'bold'), bg='white', fg='green')
+        Menu10 = Label(MenuFrame, text=f"{Date:%A, %B, %d, %Y}", font=('roboto', 9, 'bold'), bg='white', fg='green')
         Menu10.grid(row=0, column=8, padx=5, pady=5)
         Time = strftime('%I:%M:%S')
-        Menu11 = Label(MenuFrame, text=Time, font=('roboto', 10, 'bold'), bg='white', fg='green')
+        Menu11 = Label(MenuFrame, text=Time, font=('roboto', 9, 'bold'), bg='white', fg='green')
         Menu11.grid(row=0, column=9, pady=5)
         Menu11.after(1000, time)
 
@@ -165,16 +165,18 @@ class DASHBOARD:
 
         Prodimg = PhotoImage(file='./Images/prodicon.png')
         Prodimg.photo = Prodimg
+        x = 15078
         cm = 'This is all time inventory\nproducts summary'
         Inflow = Label(SFR1, text='Products',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
-        Inflow = Label(SFR1, text=" 7784",font=('Arial', 14, 'bold'), image=Prodimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
+        Inflow = Label(SFR1, text=('|', x),font=('Arial', 14, 'bold'), image=Prodimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
         Inflow = Label(SFR1, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
 
         Saleimg = PhotoImage(file='./Images/salesicon.png')
         Saleimg.photo = Saleimg
+        y = 9839
         cm = 'This is all time sales\nsummary'
         Inflow = Label(SFR2, text='Sales',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
-        Inflow = Label(SFR2, text=" 6539",font=('Arial', 14, 'bold'), image=Saleimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
+        Inflow = Label(SFR2, text=('|', y), font=('Arial', 14, 'bold'), image=Saleimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
         Inflow = Label(SFR2, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
 
         Cusimg = PhotoImage(file='./Images/cusicon.png')
@@ -184,23 +186,58 @@ class DASHBOARD:
         CusLab = Label(SFR3, text=" 684",font=('Arial', 14, 'bold'), image=Cusimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=3, y=45)
         CusLab = Label(SFR3, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
 
-        # Cusimg = PhotoImage(file='./Images/cusicon.png')
-        # Cusimg.photo = Cusimg
-        # cm = 'This is all time customers\nsummary'
-        # CusLab = Label(SFR4, text='Customer',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
-        # CusLab = Label(SFR4, text=" 684",font=('Arial', 14, 'bold'), image=Cusimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=3, y=45)
-        # CusLab = Label(SFR4, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
+        Grimg = PhotoImage(file='./Images/growthicon.png')
+        Grimg.photo = Grimg
+        z = y/x
+        p = z * 100
+        k = round(p, 2)
+        cm = 'This is all time customers\nsummary'
+        GrLab = Label(SFR4, text='Growth',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
+        GrLab = Label(SFR4, text=("|", "%", k), font=('Arial', 14, 'bold'), image=Grimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
+        GrLab = Label(SFR4, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
 
         # -----------------------Side Board Frames & Labels Ends-----------------------
 
         # -----------------------2nd Side Board Frames & Labels Begins-----------------
+        def updatelist(data):
+            LBox.delete(0, END)
+            for item in data:
+                LBox.insert(END, item)
+        
         S2FR = Frame(window, bg='white')
-        S2FR.place(x=400, y=180, width=180, height=318)
+        S2FR.place(x=400, y=180, width=180, height=45)
+        LB = Label(S2FR, text='Recent Sales', font=('Arial', 12, 'bold'), bg='white', fg="#D30E0E").place(relx=0.5, y=15, anchor=N)
+
+        LBox = Listbox(window, width=33, height=10, bd=0, font=('Arial', 10, 'bold'), fg="#3C4479")
+        LBox.place(x=400, y=225, width=180, height=273)
+        
+
+        ML = [
+            'Samsung S8',
+            'Samsung S8+',
+            'Iphone 8',
+            'Iphone XS Max',
+            'Iphone 12',
+            'Iphone 11 Pro Max',
+            'Samsung S9',
+            'Samsung S9+',
+            'Samsung S10',
+            'Samsung S10+',
+            'Samsung Note 8',
+            'Iphone 7+',
+            'Iphone X',
+            'Samsung Note 9',
+            'Samsung S9+',
+            'Samsung S10']
+
+        updatelist(ML)
+
+        
 
 
 
 
-    def home(self):
+    def homepage(self):
         win = Toplevel()
         home.HOME(win)
         self.window.withdraw()
