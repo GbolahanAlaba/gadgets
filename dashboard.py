@@ -165,19 +165,21 @@ class DASHBOARD:
 
         Prodimg = PhotoImage(file='./Images/prodicon.png')
         Prodimg.photo = Prodimg
-        x = 15078
+        x = 14221
+        s = " {:,}".format(x)
         cm = 'This is all time inventory\nproducts summary'
-        Inflow = Label(SFR1, text='Products',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
-        Inflow = Label(SFR1, text=('|', x),font=('Arial', 14, 'bold'), image=Prodimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
-        Inflow = Label(SFR1, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
+        ProLab = Label(SFR1, text='Products',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
+        ProLab = Label(SFR1, text=s, font=('Arial', 14, 'bold'), image=Prodimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
+        ProLab = Label(SFR1, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
 
         Saleimg = PhotoImage(file='./Images/salesicon.png')
         Saleimg.photo = Saleimg
-        y = 9839
+        y = 9410
+        w = " {:,}".format(y)
         cm = 'This is all time sales\nsummary'
-        Inflow = Label(SFR2, text='Sales',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
-        Inflow = Label(SFR2, text=('|', y), font=('Arial', 14, 'bold'), image=Saleimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
-        Inflow = Label(SFR2, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
+        SalesLab = Label(SFR2, text='Sales',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
+        SalesLab = Label(SFR2, text=w, font=('Arial', 14, 'bold'), image=Saleimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
+        SalesLab = Label(SFR2, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
 
         Cusimg = PhotoImage(file='./Images/cusicon.png')
         Cusimg.photo = Cusimg
@@ -191,9 +193,10 @@ class DASHBOARD:
         z = y/x
         p = z * 100
         k = round(p, 2)
+        g = " %{}".format(k)
         cm = 'This is all time customers\nsummary'
-        GrLab = Label(SFR4, text='Growth',font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
-        GrLab = Label(SFR4, text=("|", "%", k), font=('Arial', 14, 'bold'), image=Grimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
+        GrLab = Label(SFR4, text='Growth', font=('Arial', 12, 'bold'), bg='white', fg="#3C4479").place(relx=0.5, y=15, anchor=N)
+        GrLab = Label(SFR4, text=g, font=('Arial', 14, 'bold'), image=Grimg, compound=LEFT, bg='white', fg="#D30E0E").place(x=5, y=45)
         GrLab = Label(SFR4, text=cm, font=('Arial', 8, 'bold'), bg='white', fg='green').place(relx=0.5, y=110, anchor=N)
 
         # -----------------------Side Board Frames & Labels Ends-----------------------
