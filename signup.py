@@ -28,7 +28,7 @@ class SIGNUP:
 
             Acct = Acct_License.get()
             cursor.execute('select * from license where keypass = "%s"'%(Acct))
-            y = cursor.fetchone()
+            y = cursor.fetchall()
 
             database.commit()
             database.close()
@@ -53,14 +53,6 @@ class SIGNUP:
                 else:
                     Val = ((FN_Entry.get()), LN_Entry.get(), U_Entry.get(), CU_Entry.get(), P_Entry.get(), CP_Entry.get(), Acct_License.get())
                     cursor.executemany('insert into signup (firstname, lastname, username, c_username, password, c_password, license) values(?, ?, ?, ?, ?, ?, ?)', [Val])
-                    
-                    FN_Entry.delete(0, END)
-                    LN_Entry.delete(0, END)
-                    U_Entry.delete(0, END)
-                    CU_Entry.delete(0, END)
-                    P_Entry.delete(0, END)
-                    CP_Entry.delete(0, END)
-                    Acct_License.delete(0, END)
 
                     messagebox.showinfo('Great!', 'Signed Up successfully')
                     win = Toplevel()
@@ -70,6 +62,14 @@ class SIGNUP:
 
                     database.commit()
                     database.close()
+
+                    FN_Entry.delete(0, END)
+                    LN_Entry.delete(0, END)
+                    U_Entry.delete(0, END)
+                    CU_Entry.delete(0, END)
+                    P_Entry.delete(0, END)
+                    CP_Entry.delete(0, END)
+                    Acct_License.delete(0, END)
             
         #  Logo
         img = PhotoImage(file='./Images/logo.png')
